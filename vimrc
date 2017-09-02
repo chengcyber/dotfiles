@@ -20,6 +20,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 """"""""""""""""""""""""""""""
+
+"""==== Essential ====
 " Need compile, see https://github.com/Valloric/YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
@@ -27,33 +29,35 @@ Plugin 'ctrlpvim/ctrlp.vim'
 " Need compile, see https://github.com/JazzCore/ctrlp-cmatcher
 Plugin 'JazzCore/ctrlp-cmatcher'
 Plugin 'mileszs/ack.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'easymotion/vim-easymotion'
+
+"""==== Productivity ====
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'mattn/emmet-vim'
 Plugin 'godlygeek/tabular'
-Plugin 'reasonml-editor/vim-reason'
 Plugin 'jreybert/vimagit'
-
+Plugin 'tomtom/tcomment_vim'
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 Plugin 'nathanaelkane/vim-indent-guides'
-" Syntax
-Plugin 'leafgarland/typescript-vim'
-" Buffer Delete
-" Plugin 'moll/vim-bbye'
 
+"""==== Syntax Support ====
+Plugin 'leafgarland/typescript-vim'
+Plugin 'reasonml-editor/vim-reason'
+
+"""==== UI ====
 " Color Schemes
 " :colorshceme <space> <C-d> display all color available
 "Plugin 'bluz71/vim-moonfly-colors'
 "Plugin 'kudabux/vim-srcery-drk'
 "Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 "Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'morhetz/gruvbox'
 
 """"""""""""""""""""""""""""""
