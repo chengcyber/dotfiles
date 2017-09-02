@@ -457,16 +457,13 @@ nnoremap <leader>gg :Magit<CR>
 " colorscheme theme Settings ---------------------- {{{
 syntax on
 " Color Scheme
-" colorscheme moonfly
-" colorscheme srcery-drk"
-" colorscheme onehalfdark
-colorscheme gruvbox
+silent! colorscheme gruvbox
 let g:airline#extension#tabline#enabled=1
 let g:airline_theme='gruvbox'
 
 "syntax enable
 "set background=light
-"colorscheme solarized
+"silent! colorscheme solarized
 "
 "if has('gui_running')
 "    set background=light

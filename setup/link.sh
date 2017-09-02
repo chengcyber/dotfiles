@@ -43,10 +43,13 @@ done
 fancy_echo "Setting up temp folds"
 if [[ ! -e ~/.vim/tmp/backup ]]; then
   mkdir -p ~/.vim/tmp/backup
+  echo "backup created..."
 fi
 if [[ ! -e ~/.vim/tmp/swap ]]; then
   mkdir -p ~/.vim/tmp/swap
+  echo "swap created..."
 fi
 if [[ ! -e ~/.vim/tmp/undo ]]; then
   mkdir -p ~/.vim/tmp/undo
+  echo "undo created..."
 fi
