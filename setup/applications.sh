@@ -31,6 +31,7 @@ brew install zsh-completions
 brew install bash
 brew install bash-completion
 brew install fzf
+[ -e /usr/local/opt/fzf/install ] && /usr/local/opt/fzf/install --all;
 brew install the_silver_searcher
 brew install ack
 brew install wget
