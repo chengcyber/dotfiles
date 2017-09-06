@@ -44,6 +44,7 @@ Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'rizzatti/dash.vim'
 
 """==== Syntax Support ====
 Plugin 'leafgarland/typescript-vim'
@@ -450,8 +451,8 @@ nmap =j :%!python -m json.tool<CR>
 nnoremap <leader>gg :Magit<CR>
 " }}}
 
-" bbye Settings ---------------------- {{{
-" :nnoremap <Leader>q :Bdelete<CR>
+" Dash Settings ---------------------- {{{
+nnoremap <leader>dd :Dash<Cr>
 " }}}
 
 " colorscheme theme Settings ---------------------- {{{
