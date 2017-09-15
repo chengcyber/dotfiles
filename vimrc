@@ -246,6 +246,7 @@ nnoremap <C-l> <C-w>l
 :iabbrev waht what
 :iabbrev sytle style
 :iabbrev consle console
+:iabbrev destory destroy
 " }}}
 
 " YouCompleteMe Settings ---------------------- {{{
