@@ -37,6 +37,7 @@ brew install ack
 brew install wget
 brew install watchman # needed for jest --watch
 brew install git
+brew install ctags
 
 fancy_echo "Setting up tmux"
 brew install tmux

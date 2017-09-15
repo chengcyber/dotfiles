@@ -22,6 +22,7 @@ source ~/dotfiles/setup/functions.sh
 dotfiles=(
 tmux.conf
 vimrc
+ctags
 )
 
 fancy_echo "Backup current config"
