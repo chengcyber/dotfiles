@@ -39,6 +39,12 @@ Plugin 'mattn/emmet-vim'
 Plugin 'godlygeek/tabular'
 Plugin 'jreybert/vimagit'
 Plugin 'tomtom/tcomment_vim'
+" Navigate tag file
+" https://github.com/maxbrunsfeld/vim-config/blob/master/ctags
+" https://stackoverflow.com/questions/4777366/recommended-vim-plugins-for-javascript-coding/5893600#5893600
+" npm install -g git+https://github.com/ramitos/jsctags.git
+Plugin 'majutsushi/tagbar'
+
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
@@ -439,6 +445,10 @@ if exists(":Tabularize")
 "  nmap <Leader>a: :Tabularize /:\zs<CR>
 "  vmap <Leader>a: :Tabularize /:\zs<CR>
 endif
+" }}}
+
+" TagBar Settings ---------------------- {{{
+nnoremap <c-y> :TagbarToggle<CR>
 " }}}
 
 " Vim-Reason Settings ---------------------- {{{
