@@ -1,0 +1,14 @@
+[push]
+  default = current
+[difftool "sourcetree"]
+  cmd = /usr/local/bin/ksdiff -- \"$LOCAL\" \"$REMOTE\"
+  path =
+[mergetool "sourcetree"]
+  cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
+[rebase]
+  autosquash = true
+[pull]
+  rebase = true
+[merge]
+  defaultToUpstream = true
