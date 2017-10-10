@@ -13,6 +13,10 @@ git clone git@github.com:kimochg/dotfiles.git ~/dotfiles && cd ~/dotfiles/setup 
 1. open `tmux`, use `CTRL + A, I` install plugins
 2. open `macvim`, use `:PluginInstall`
 
+# Caveats
+
+Remember `tmux kill-server`, which totally reset your tmux config.
+
 # Vim
 
 ## Plugins
