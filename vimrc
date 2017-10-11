@@ -229,8 +229,15 @@ nnoremap <leader>cs :let @*=expand("%")<CR>
 "copies the filename including its full path.
 nnoremap <leader>cl :let @*=expand("%:p")<CR>
 
-" Insert Mode Mapping
+" Avoid ESC
 inoremap jk <esc>
+cnoremap jk <C-c>
+
+" Switch ; : functionality
+nnoremap : ;
+nnoremap ; :
+vnoremap : ;
+vnoremap ; :
 
 " Operator Pending Mapping
 onoremap in( :<c-u>normal! f(vi(<cr>
