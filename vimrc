@@ -233,11 +233,13 @@ nnoremap <leader>cl :let @*=expand("%:p")<CR>
 inoremap jk <esc>
 cnoremap jk <C-c>
 
-" Switch ; : functionality
+" Switch functionality
 nnoremap : ;
 nnoremap ; :
 vnoremap : ;
 vnoremap ; :
+nnoremap 0 ^
+nnoremap ^ 0
 
 " Operator Pending Mapping
 onoremap in( :<c-u>normal! f(vi(<cr>
