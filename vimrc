@@ -213,6 +213,8 @@ nnoremap N Nzzzv
 :nnoremap <leader>K :tabclose<cr>
 :nnoremap <leader>N :tabnext<cr>
 :nnoremap <leader>P :tabprevious<cr>
+""" buffer delete
+:nnoremap <leader>kk :bdelete<cr>
 """ Quickfix
 nnoremap <c-q> :copen<cr>
 """ Auto quote a word
