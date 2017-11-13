@@ -34,7 +34,7 @@ values."
      html
      javascript
      typescript
-     ycmd
+     ;; ycmd
      yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -60,9 +60,6 @@ values."
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
-                                      js2-mode
-                                      rjsx-mode
-                                      flycheck-ycmd
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -322,30 +319,37 @@ you should place your code here."
   (setq backup-inhibited t)
   ;; disable auto save
   (setq auto-save-default nil)
+  ;; disable lock file
+  (setq create-lockfiles nil)
 
   ;; indent all
-  (setq-default
-   tab-width 2
-   indent-tabs-mode nil
-   c-basic-offset 2
-   js-indent-level 2
-   js2-basic-offset 2
-   js-indent-level 2
-   react-mode-offset 2
-   typescript-mode-offset 2
-   typescript-expr-indent-offset 2
-   typescript-indent-level 2
-   ;; web-mode
-   css-indent-offset 2
-   web-mode-indent-style 2
-   web-mode-markup-indent-offset 2
-   web-mode-css-indent-offset 2
-   web-mode-code-indent-offset 2
-   web-mode-attr-indent-offset 2
-   web-mode-attr-value-indent-offset 2
-   web-mode-indentless-elements 2
-   web-mode-block-padding 2
-   )
+  (defun set-indent-all (n)
+    (setq-default
+     standard-indent n
+     tab-width n
+     indent-tabs-mode nil
+     c-basic-offset n
+     js-indent-level n
+     jsn-basic-offset 2
+     react-mode-offset n
+     react-indent-level n
+     typescript-indent-level n
+     typescript-expr-indent-offset n
+     ;; web-mode
+     css-indent-offset n
+     web-mode-indent-style n
+     web-mode-markup-indent-offset n
+     web-mode-css-indent-offset n
+     web-mode-code-indent-offset n
+     web-mode-attr-indent-offset n
+     web-mode-attr-value-indent-offset n
+     web-mode-indentless-elements n
+     web-mode-block-padding n
+     ;; shell
+     sh-basic-offset n
+     sh-indentation n
+     ))
+  (set-indent-all 2)
 
   ;; company
   (setq  company-idle-delay 0)
@@ -355,101 +359,31 @@ you should place your code here."
   (setq js2-missing-semi-one-line-override nil)
   (setq js2-strict-trailing-comma-warning nil)
 
-  ;; tide configuration
-  (defun setup-tide-mode ()
-    (interactive)
-    (tide-setup)
-    (flycheck-mode +1)
-    (setq flycheck-check-syntax-automatically '(save mode-enabled))
-    (eldoc-mode +1)
-    (tide-hl-identifier-mode +1)
-    ;; company is an optional dependency. You have to
-    ;; install it separately via package-install
-    ;; `M-x package-install [ret] company`
-    (company-mode +1))
-
   ;; aligns annotation to the right hand side
   (setq company-tooltip-align-annotations t)
 
-  ;; formats the buffer before saving
-  ;; (add-hook 'before-save-hook 'tide-format-before-save)
-
-  ;; ts
-  ;; (add-hook 'typescript-mode-hook #'setup-tide-mode)
-
-  ;; tsx
-  ;; (require 'web-mode)
-  (require 'flycheck)
-  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
-  (add-hook 'web-mode-hook
-            (lambda ()
-              (when (string-equal "tsx" (file-name-extension buffer-file-name))
-                (
-                 setup-tide-mode
-                 )))
-            )
-  ;; enable typescript-tslint checker
-  (flycheck-add-mode 'typescript-tslint 'web-mode)
-
-  ;; js
-  ;; (add-hook 'js2-mode-hook #'setup-tide-mode)
-  ;; configure javascript-tide checker to run after your default javascript checker
-  ;; (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
-  (flycheck-add-mode 'javascript-eslint 'web-mode)
-
-  ;; jsx
-  ;; (require 'web-mode)
-  ;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
-  ;; (add-hook 'web-mode-hook
-  ;;           (lambda ()
-  ;;             (when (string-equal "jsx" (file-name-extension buffer-file-name))
-  ;;               (setup-tide-mode))))
-  ;; configure jsx-tide checker to run after your default jsx checker
-  ;; (flycheck-add-mode 'javascript-eslint 'web-mode)
-  ;; (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)
-
-  ;; company-tern
-  ;; (require 'company)
-  ;; (require 'tern)
-  ;; (require 'company-tern)
-  ;; (with-eval-after-load 'company
-  ;;   (add-to-list 'company-backends 'company-tern))
-
-  ;; tern-ac
-  ;; (eval-after-load 'tern
-  ;;   '(progn
-  ;;      (require 'tern-auto-complete)
-  ;;      (tern-ac-setup)))
-
-  ;; (setq global-auto-complete-mode t)
-
   ;;;; ycmd
-  (require 'ycmd)
-  (add-hook 'after-init-hook #'global-ycmd-mode)
-  (add-hook 'python-mode-hook 'ycmd-mode)
-  (add-hook 'js2-mode-hook 'ycmd-mode)
-  (add-hook 'typescript-mode-hook 'ycmd-mode)
-  (add-hook 'rjsx-mode-hook 'ycmd-mode)
-  ;; (add-hook 'web-mode-hook 'ycmd-mode)
-  (add-hook 'typescript-mode-hook 'ycmd-mode)
-  (setq ycmd-server-command (list "python" (file-truename "~/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd/")))
-  ;; (setq ycmd-global-config (file-truename ".ycm_extra_conf.py"))
-  (require 'company-ycmd)
-  (add-hook 'after-init-hook #'global-company-mode)
-  (company-ycmd-setup)
-  ;; (require 'flycheck-ycmd)
-  ;; (add-hook 'after-init-hook #'global-flycheck-mode)
-  ;; (flycheck-ycmd-setup)
-  (require 'ycmd-eldoc)
-  (add-hook 'ycmd-mode-hook 'ycmd-eldoc-setup)
+  ;; (require 'ycmd)
+  ;; (add-hook 'after-init-hook #'global-ycmd-mode)
+  ;; (add-hook 'python-mode-hook 'ycmd-mode)
+  ;; (add-hook 'js2-mode-hook 'ycmd-mode)
+  ;; (add-hook 'typescript-mode-hook 'ycmd-mode)
+  ;; (add-hook 'rjsx-mode-hook 'ycmd-mode)
+  ;; ;; (add-hook 'web-mode-hook 'ycmd-mode)
+  ;; (add-hook 'typescript-mode-hook 'ycmd-mode)
+  ;; (setq ycmd-server-command (list "python" (file-truename "~/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd/")))
+  ;; ;; (setq ycmd-global-config (file-truename ".ycm_extra_conf.py"))
+  ;; (require 'company-ycmd)
+  ;; (add-hook 'after-init-hook #'global-company-mode)
+  ;; (company-ycmd-setup)
+  ;; ;; (require 'flycheck-ycmd)
+  ;; ;; (add-hook 'after-init-hook #'global-flycheck-mode)
+  ;; ;; (flycheck-ycmd-setup)
+  ;; (require 'ycmd-eldoc)
+  ;; (add-hook 'ycmd-mode-hook 'ycmd-eldoc-setup)
 
-  (setq request-log-level -1)
+  ;; (setq request-log-level -1)
 
-  ;; (add-to-list 'auto-mode-alist '("\\/.*\\.tsx\\'" . typescript-mode))
-  ;; (add-to-list 'auto-mode-alist '("\\/.*\\.tsx\\'" . web-mode))
-
-  ;; disable auto-indent
-  ;; (add-hook 'web-mode-hook (lambda () (electric-indent-local-mode -1)))
 
     ;;; Prevent suggestions from being triggered automatically. In particular,
   ;;; this makes it so that:
@@ -495,7 +429,6 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(global-ycmd-mode t)
  '(js2-include-node-externs t)
  '(package-selected-packages
    (quote
