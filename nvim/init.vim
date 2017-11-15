@@ -172,6 +172,10 @@ nmap =j :%!python -m json.tool<CR>
 :nnoremap <leader>N :tabnext<cr>
 :nnoremap <leader>P :tabprevious<cr>
 
+" buffer naviagtion
+nnoremap <leader>n :bn<cr>
+nnoremap <leader>p :bp<cr>
+
 " add a new line according to the line below
 :nnoremap <leader>o jO<esc>
 
