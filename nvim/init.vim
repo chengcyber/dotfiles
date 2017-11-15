@@ -16,6 +16,8 @@ call plug#begin('~/.vim/plugged')
 
 " ===== Looking =====
   Plug 'morhetz/gruvbox'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
 
 " ===== Utils =====
 " https://github.com/CodeFalling/fcitx-vim-osx
@@ -26,6 +28,8 @@ call plug#begin('~/.vim/plugged')
 " ===== Language =====
   Plug 'HerringtonDarkholme/yats.vim'
   Plug 'mhartington/nvim-typescript', { 'do': ':UpdateRemotePlugins' }
+  Plug 'w0rp/ale'
+
 
 " Initialize plugin system
 call plug#end()
@@ -300,4 +304,19 @@ nnoremap <leader>dd :Dash<Cr>
 
 " Deoplete Settings ---------------------- {{{
 let g:deoplete#enable_at_startup = 1
+" }}}
+
+" Airline Settings ---------------------- {{{
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_theme= 'gruvbox'
 " }}}
