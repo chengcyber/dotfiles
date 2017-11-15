@@ -166,6 +166,12 @@ nmap =j :%!python -m json.tool<CR>
 :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
 
+""" tab navigation
+:nnoremap <leader>T :tabnew<cr>
+:nnoremap <leader>K :tabclose<cr>
+:nnoremap <leader>N :tabnext<cr>
+:nnoremap <leader>P :tabprevious<cr>
+
 " add a new line according to the line below
 :nnoremap <leader>o jO<esc>
 
