@@ -25,6 +25,16 @@ call plug#begin('~/.vim/plugged')
   Plug 'CodeFalling/fcitx-vim-osx'
   Plug 'rizzatti/dash.vim'
   Plug 'scrooloose/nerdcommenter'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'ervandew/supertab'
+  " Plug 'tpope/vim-endwise'
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
+  " Plug 'wellle/targets.vim'
+  " Plug 'terryma/vim-multiple-cursors'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-repeat'
+  Plug 'junegunn/vim-easy-align'
 
 " ===== Language =====
   Plug 'HerringtonDarkholme/yats.vim'
@@ -319,5 +329,16 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
-let g:airline_theme= 'gruvbox'
+let g:airline_theme= 'qwq'
 " }}}
+
+" SuperTab Settings ---------------------- {{{
+" let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
+" }}}
+
+" Easy Align Settings ---------------------- {{{
+xmap ga <Plug>(LiveEasyAlign)
+nmap ga <Plug>(LiveEasyAlign)
+" }}}
+
