@@ -1,6 +1,3 @@
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
 " Plugin Settings ----------------- {{{
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -11,10 +8,11 @@ call plug#begin('~/.vim/plugged')
 " ===== Essentail =====
   Plug 'scrooloose/nerdtree'
   Plug 'mileszs/ack.vim'
-  Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'ctrlpvim/ctrlp.vim'
   "https://github.com/JazzCore/ctrlp-cmatcher
   Plug 'JazzCore/ctrlp-cmatcher'
+  Plug 'easymotion/vim-easymotion'
 
 " ===== Looking =====
   Plug 'morhetz/gruvbox'
@@ -27,7 +25,7 @@ call plug#begin('~/.vim/plugged')
 
 " ===== Language =====
   Plug 'HerringtonDarkholme/yats.vim'
-  Plug 'mhartington/nvim-typescript', { 'do': function('DoRemote') }
+  Plug 'mhartington/nvim-typescript', { 'do': ':UpdateRemotePlugins' }
 
 " Initialize plugin system
 call plug#end()
@@ -182,9 +180,9 @@ nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 """ copy file path
 "copies just the filename.
-nnoremap <leader>cs :let @*=expand("%")<CR>
+nnoremap <leader>ps :let @*=expand("%")<CR>
 "copies the filename including its full path.
-nnoremap <leader>cl :let @*=expand("%:p")<CR>
+nnoremap <leader>pl :let @*=expand("%:p")<CR>
 
 " }}}
 
