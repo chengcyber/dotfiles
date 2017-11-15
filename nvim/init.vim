@@ -35,6 +35,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
   Plug 'junegunn/vim-easy-align'
+  " https://sjl.bitbucket.io/gundo.vim/
+  Plug 'sjl/gundo.vim'
 
 " ===== Language =====
   Plug 'HerringtonDarkholme/yats.vim'
@@ -342,3 +344,9 @@ xmap ga <Plug>(LiveEasyAlign)
 nmap ga <Plug>(LiveEasyAlign)
 " }}}
 
+" Gundo Settings ---------------------- {{{
+nnoremap <leader>u :GundoToggle<CR>
+let g:gundo_width = 60
+let g:gundo_preview_height = 40
+let g:gundo_right = 1
+" }}}
