@@ -16,6 +16,8 @@ call plug#begin('~/.vim/plugged')
 
 " ===== Looking =====
   Plug 'morhetz/gruvbox'
+  Plug 'rakr/vim-one'
+  Plug 'altercation/vim-colors-solarized'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'mhinz/vim-startify'
@@ -55,7 +57,15 @@ let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 
 " Editor Settings ----------------- {{{
 
-set guifont=Fira\ Mono\ for\ Powerline:h14
+" set guifont=Fira\ Mono\ for\ Powerline:h14
+" vimR remove the guifont option :(
+if has("gui_running")
+	if system("osascript -e 'tell application "Finder" to get bounds of window of desktop' | cut -d ' ' -f 4") > 900
+		set guifont=Fira\ Mono\ Pro:h23
+	else
+		set guifont=Fira\ Mono\ Pro:h14
+	endif
+endif
 set bs=indent,eol,start " Allow backspacing over everything in insert mode
 set tabstop=2           " number of spaces a tab counts for
 set shiftwidth=2        " spaces of autoindents
@@ -235,10 +245,13 @@ autocmd BufNewFile,BufRead *.wxml set filetype=html
 " }}}
 
 """ colorschema ---------------------- {{{
-colorscheme gruvbox
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " set background=dark
-set background=light
+"colorscheme gruvbox
+colorscheme gruvbox
+"colorscheme solarized
+set background=dark
+let g:one_allow_italics = 1 " I love italic for comments
 " }}}
 
 " NERDTree Settings ---------------------- {{{
