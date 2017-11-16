@@ -94,7 +94,6 @@ set listchars=extends:❯,precedes:❮,trail:·,extends:>,tab:▸\ ,eol:¬
 "augroup END
 
 set showbreak=↪
-set t_Co=256
 
 
 " Backups
@@ -246,13 +245,15 @@ autocmd BufNewFile,BufRead *.wxml set filetype=html
 " }}}
 
 """ colorschema ---------------------- {{{
+set t_Co=256
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-" set background=dark
-"colorscheme gruvbox
+set termguicolors
 colorscheme gruvbox
-"colorscheme solarized
-set background=dark
+" colorscheme one
+" colorscheme solarized
+set background=light
 let g:one_allow_italics = 1 " I love italic for comments
+let g:gruvbox_italic=1
 " }}}
 
 " NERDTree Settings ---------------------- {{{
