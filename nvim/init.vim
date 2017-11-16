@@ -74,6 +74,14 @@ set showmatch           " Show matching brackets
 
 set list
 set listchars=extends:❯,precedes:❮,trail:·,extends:>,tab:▸\ ,eol:¬
+
+" Only shown when not in insert mode so I don't go insane.
+"augroup trailing
+  "au!
+  "au InsertEnter * :set listchars-=trail:⌴
+  "au InsertLeave * :set listchars+=trail:⌴
+"augroup END
+
 set showbreak=↪
 set t_Co=256
 
@@ -229,7 +237,8 @@ autocmd BufNewFile,BufRead *.wxml set filetype=html
 """ colorschema ---------------------- {{{
 colorscheme gruvbox
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=dark
+" set background=dark
+set background=light
 " }}}
 
 " NERDTree Settings ---------------------- {{{
