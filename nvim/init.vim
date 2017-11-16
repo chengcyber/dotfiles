@@ -59,7 +59,8 @@ let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 
 " set guifont=Fira\ Mono\ for\ Powerline:h14
 " vimR remove the guifont option :(
-if has("gui_running")
+" if has("gui_running")
+if !has("gui_vimr")
 	if system("osascript -e 'tell application "Finder" to get bounds of window of desktop' | cut -d ' ' -f 4") > 900
 		set guifont=Fira\ Mono\ Pro:h23
 	else
