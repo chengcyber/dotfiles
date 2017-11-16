@@ -375,3 +375,17 @@ let g:gundo_width = 60
 let g:gundo_preview_height = 40
 let g:gundo_right = 1
 " }}}
+
+" ALE Settings ---------------------- {{{
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+" g:ale_lint_on_save
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+let g:ale_linter_aliases = {
+\  'jsx': 'javascript',
+\  'typscript': 'javascript',
+\}
+" }}}
+
