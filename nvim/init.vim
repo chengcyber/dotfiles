@@ -26,7 +26,8 @@ call plug#begin('~/.vim/plugged')
 " https://github.com/CodeFalling/fcitx-vim-osx
   Plug 'CodeFalling/fcitx-vim-osx'
   Plug 'rizzatti/dash.vim'
-  Plug 'scrooloose/nerdcommenter'
+  " Plug 'scrooloose/nerdcommenter'
+  Plug 'tomtom/tcomment_vim'
   Plug 'jiangmiao/auto-pairs'
   Plug 'ervandew/supertab'
   " Plug 'tpope/vim-endwise'
