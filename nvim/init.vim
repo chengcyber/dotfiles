@@ -29,7 +29,7 @@ call plug#begin('~/.vim/plugged')
   " Plug 'scrooloose/nerdcommenter'
   Plug 'tomtom/tcomment_vim'
   Plug 'jiangmiao/auto-pairs'
-  Plug 'ervandew/supertab'
+  " Plug 'ervandew/supertab'
   " Plug 'tpope/vim-endwise'
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
