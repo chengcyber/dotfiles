@@ -40,6 +40,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/vim-easy-align'
   " https://sjl.bitbucket.io/gundo.vim/
   Plug 'sjl/gundo.vim'
+  Plug 'chrisbra/NrrwRgn'
+  Plug 'wesleyche/SrcExpl'
+  Plug 'majutsushi/tagbar'
+  Plug 'vim-scripts/taglist.vim'
+  " Plug 'heavenshell/vim-jsdoc'
+  Plug 'joegesualdo/jsdoc.vim'
 
 " ===== Language =====
   Plug 'HerringtonDarkholme/yats.vim'
@@ -357,6 +363,15 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_theme= 'qwq'
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
 " }}}
 
 " SuperTab Settings ---------------------- {{{
@@ -370,7 +385,7 @@ nmap ga <Plug>(LiveEasyAlign)
 " }}}
 
 " Gundo Settings ---------------------- {{{
-nnoremap <leader>u :GundoToggle<CR>
+nnoremap tg :GundoToggle<CR>
 let g:gundo_width = 60
 let g:gundo_preview_height = 40
 let g:gundo_right = 1
@@ -392,3 +407,69 @@ nmap <silent> <leader>ep <Plug>(ale_previous_wrap)
 nmap <silent> <leader>en <Plug>(ale_next_wrap)
 " }}}
 
+
+" SrcExpl Settings ---------------------- {{{
+" // The switch of the Source Explorer
+nnoremap ts :SrcExplToggle<CR>
+
+" // Set the height of Source Explorer window
+let g:SrcExpl_winHeight = 8
+
+" // Set 100 ms for refreshing the Source Explorer
+let g:SrcExpl_refreshTime = 100
+
+" // Set "Enter" key to jump into the exact definition context
+let g:SrcExpl_jumpKey = "<ENTER>"
+
+" // Set "Space" key for back from the definition context
+let g:SrcExpl_gobackKey = "<SPACE>"
+
+" // In order to avoid conflicts, the Source Explorer should know what plugins
+" // except itself are using buffers. And you need add their buffer names into
+" // below listaccording to the command ":buffers!"
+let g:SrcExpl_pluginList = [
+        \ "__Tag_List__",
+        \ "_NERD_tree_"
+    \ ]
+
+" // Enable/Disable the local definition searching, and note that this is not
+" // guaranteed to work, the Source Explorer doesn't check the syntax for now.
+" // It only searches for a match with the keyword according to command 'gd'
+let g:SrcExpl_searchLocalDef = 1
+
+" // Do not let the Source Explorer update the tags file when opening
+let g:SrcExpl_isUpdateTags = 0
+
+" // Use 'Exuberant Ctags' with '--sort=foldcase -R .' or '-L cscope.files' to
+" // create/update the tags file
+let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ."
+
+" // Set "<F12>" key for updating the tags file artificially
+let g:SrcExpl_updateTagsKey = "<F12>"
+
+" // Set "<F3>" key for displaying the previous definition in the jump list
+let g:SrcExpl_prevDefKey = "<F3>"
+
+" // Set "<F4>" key for displaying the next definition in the jump list
+let g:SrcExpl_nextDefKey = "<F4>"
+" }}}
+
+
+" SrcExpl Settings ---------------------- {{{
+" tb => open the tagbar
+nnoremap tb :TlistClose<CR>:TagbarToggle<CR>
+" ti => taglist
+nnoremap tl :TagbarClose<CR>:Tlist<CR>
+" Tagbar
+let g:tagbar_width=30
+" Taglist
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+let Tlist_File_Fold_Auto_Close=1
+let Tlist_WinWidth=30
+let Tlist_Use_Right_Window=1
+" }}}
+
+" JSDoc Settings ---------------------- {{{
+nnoremap jsd ?function<cr>:noh<cr>:call JSDocAdd()<cr>
+" }}}
