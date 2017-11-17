@@ -387,5 +387,8 @@ let g:ale_linter_aliases = {
 \  'jsx': 'javascript',
 \  'typscript': 'javascript',
 \}
+""" navigation errors
+nmap <silent> <leader>ep <Plug>(ale_previous_wrap)
+nmap <silent> <leader>en <Plug>(ale_next_wrap)
 " }}}
 
