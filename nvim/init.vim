@@ -251,7 +251,7 @@ autocmd BufNewFile,BufRead *.wxml set filetype=html
 :iabbrev destory destroy
 " }}}
 
-""" colorschema ---------------------- {{{
+" colorschema Settings ---------------------- {{{
 set t_Co=256
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
@@ -261,6 +261,10 @@ colorscheme gruvbox
 set background=light
 let g:one_allow_italics = 1 " I love italic for comments
 let g:gruvbox_italic=1
+" }}}
+
+" Folder Settings ---------------------- {{{
+autocmd FileType vim,c++,txt setlocal foldmethod=marker
 " }}}
 
 " NERDTree Settings ---------------------- {{{
@@ -407,7 +411,6 @@ nmap <silent> <leader>ep <Plug>(ale_previous_wrap)
 nmap <silent> <leader>en <Plug>(ale_next_wrap)
 " }}}
 
-
 " SrcExpl Settings ---------------------- {{{
 " // The switch of the Source Explorer
 nnoremap ts :SrcExplToggle<CR>
@@ -453,7 +456,6 @@ let g:SrcExpl_prevDefKey = "<F3>"
 " // Set "<F4>" key for displaying the next definition in the jump list
 let g:SrcExpl_nextDefKey = "<F4>"
 " }}}
-
 
 " SrcExpl Settings ---------------------- {{{
 " tb => open the tagbar
