@@ -46,6 +46,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/taglist.vim'
   " Plug 'heavenshell/vim-jsdoc'
   Plug 'joegesualdo/jsdoc.vim'
+  " FZF
+  Plug '/usr/local/opt/fzf'
+  Plug 'junegunn/fzf.vim'
+  Plug 'tpope/vim-fugitive'
+  Plug 'dkarter/bullets.vim'
 
 " ===== Language =====
   Plug 'HerringtonDarkholme/yats.vim'
@@ -180,6 +185,10 @@ nnoremap 0 ^
 nnoremap ^ 0
 " copy to line end
 nnoremap Y y$
+" copy to system clipboard
+noremap gy "+y
+" copy whole file to system clipboard
+nnoremap gY gg"+yG
 " Navigation between panes
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -198,6 +207,20 @@ vnoremap gu u
 " Make HOME and END behave like shell
 inoremap <C-E> <End>
 inoremap <C-A> <Home>
+
+" prevent entering ex mode accidentally
+nnoremap Q <Nop>
+
+" Tab/shift-tab to indent/outdent in visual mode.
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
+" Keep selection when indenting/outdenting.
+vnoremap > >gv
+vnoremap < <gv
+
+" Search for selected text
+vnoremap * "xy/<C-R>x<CR>
 
 " https://coderwall.com/p/faceag/format-json-in-vim
 nmap =j :%!python -m json.tool<CR>
@@ -475,3 +498,31 @@ let Tlist_Use_Right_Window=1
 " JSDoc Settings ---------------------- {{{
 nnoremap jsd ?function<cr>:noh<cr>:call JSDocAdd()<cr>
 " }}}
+
+" FZF Settings ---------------------- {{{
+fun! FzfOminiFiles()
+  let is_git = system('git status')
+  if v:shell_error
+    :Files
+  else
+    :GitFiles --exclude-standard
+  endif
+endfun
+
+nnoremap <C-f>b :Buffers<CR>
+nnoremap <C-f>g :Ag<CR>
+nnoremap <C-f>c :Commands<CR>
+nnoremap <C-f>l :BLines<CR>
+nnoremap <C-f>p :call FzfOminiFiles()<CR>
+" nnoremap <C-p> :Files<CR>
+" }}}
+
+" Bullet.vim Settings ---------------------- {{{
+let g:bullets_enabled_file_types = [
+    \ 'markdown',
+    \ 'text',
+    \ 'gitcommit',
+    \ 'scratch'
+    \]
+" }}}
+
