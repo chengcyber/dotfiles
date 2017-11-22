@@ -95,6 +95,10 @@ set smartcase           " but become case sensitive if you type uppercase charac
 set ignorecase          " searches are case insentitve
 set showmatch           " Show matching brackets
 
+" solve performance issue when in iterm2
+set ttyfast
+set lazyredraw
+
 set list
 set listchars=extends:❯,precedes:❮,trail:·,extends:>,tab:▸\ ,eol:¬
 
@@ -375,6 +379,9 @@ nnoremap <leader>dd :Dash<Cr>
 
 " Deoplete Settings ---------------------- {{{
 let g:deoplete#enable_at_startup = 1
+
+" enable Javascript completion through TSS
+let g:deoplete#sources#tss#javascript_support = 1
 " }}}
 
 " Airline Settings ---------------------- {{{
