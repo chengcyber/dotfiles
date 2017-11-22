@@ -105,6 +105,10 @@ set listchars=extends:❯,precedes:❮,trail:·,extends:>,tab:▸\ ,eol:¬
 set showbreak=↪
 set t_Co=256
 
+" solve performance issue with iterm2
+set ttyfast
+set lazyredraw
+
 " Backups
 set backup
 set noswapfile
