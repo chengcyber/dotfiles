@@ -80,7 +80,13 @@ filetype plugin indent on    " required
 
 " Editor Settings ---------------------- {{{
 set macligatures
-set guifont=Fira\ Mono\ for\ Powerline:h14
+set guifont=monofur\ for\ Powerline:h18
+" if system("osascript -e 'tell application \"Finder\" to get bounds of window of desktop' | cut -d ' ' -f 4") > 900
+"   set guifont=Fira\ Mono\ for\ Powerline:h23
+" else
+"   set guifont=Fira\ Mono\ for\ Powerline:h14
+" endif
+
 set bs=indent,eol,start " Allow backspacing over everything in insert mode
 set tabstop=2           " number of spaces a tab counts for
 set shiftwidth=2        " spaces of autoindents
