@@ -503,7 +503,7 @@ let Tlist_Use_Right_Window=1
 " }}}
 
 " JSDoc Settings ---------------------- {{{
-nnoremap jsd ?function<cr>:noh<cr>:call JSDocAdd()<cr>
+nnoremap <leader>jsd ?function<cr>:noh<cr>:call JSDocAdd()<cr>
 " }}}
 
 " FZF Settings ---------------------- {{{
