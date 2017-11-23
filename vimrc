@@ -252,6 +252,33 @@ vnoremap ; :
 nnoremap 0 ^
 nnoremap ^ 0
 
+" copy to line end
+nnoremap Y y$
+" copy to system clipboard
+noremap gy "+y
+" copy whole file to system clipboard
+nnoremap gY gg"+yG
+
+vnoremap u y
+vnoremap gu u
+" Make HOME and END behave like shell
+inoremap <C-E> <End>
+inoremap <C-A> <Home>
+
+" prevent entering ex mode accidentally
+nnoremap Q <Nop>
+
+" Tab/shift-tab to indent/outdent in visual mode.
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
+" Keep selection when indenting/outdenting.
+vnoremap > >gv
+vnoremap < <gv
+
+" Search for selected text
+vnoremap * "xy/<C-R>x<CR>
+
 " Operator Pending Mapping
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap il( :<c-u>normal! F)vi(<cr>
