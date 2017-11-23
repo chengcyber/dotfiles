@@ -520,7 +520,7 @@ nnoremap <leader>dd :Dash<Cr>
 " }}}
 
 " JSDoc Settings ---------------------- {{{
-nnoremap jsd ?function<cr>:noh<cr>:call JSDocAdd()<cr>
+nnoremap <leader>jsd ?function<cr>:noh<cr>:call JSDocAdd()<cr>
 " }}}
 
 " Easy Align Settings ---------------------- {{{
