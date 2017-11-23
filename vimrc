@@ -49,6 +49,11 @@ Plugin 'rizzatti/dash.vim'
 """==== Syntax Support ====
 Plugin 'leafgarland/typescript-vim'
 Plugin 'reasonml-editor/vim-reason'
+Plugin 'joegesualdo/jsdoc.vim'
+
+"""==== Util ====
+Plugin 'CodeFalling/fcitx-vim-osx'
+Plugin 'junegunn/vim-easy-align'
 
 """==== UI ====
 " Color Schemes
@@ -512,6 +517,15 @@ nnoremap <leader>gg :Magit<CR>
 
 " Dash Settings ---------------------- {{{
 nnoremap <leader>dd :Dash<Cr>
+" }}}
+
+" JSDoc Settings ---------------------- {{{
+nnoremap jsd ?function<cr>:noh<cr>:call JSDocAdd()<cr>
+" }}}
+
+" Easy Align Settings ---------------------- {{{
+xmap ga <Plug>(LiveEasyAlign)
+nmap ga <Plug>(LiveEasyAlign)
 " }}}
 
 " colorscheme theme Settings ---------------------- {{{
