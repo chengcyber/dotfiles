@@ -1,10 +1,4 @@
 " type "za" for fold and unfold
-" Vimscript file settings ---------------------- {{{
-augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-augroup END
-" }}}
 
 " Vundle Settings  ---------------------- {{{
 " required
@@ -109,6 +103,9 @@ set t_Co=256
 set ttyfast
 set lazyredraw
 
+" https://coderwall.com/p/faceag/format-json-in-vim
+nmap =j :%!python -m json.tool<CR>
+
 " Backups
 set backup
 set noswapfile
@@ -192,6 +189,10 @@ autocmd BufNewFile,BufRead *.es6,*.coffee set filetype=javascript
 autocmd BufNewFile,BufRead *.wxml set filetype=html
 
 "}}}
+
+" Folder Settings ---------------------- {{{
+autocmd FileType vim,c++,txt setlocal foldmethod=marker
+" }}}
 
 " Key Mapping Settings ---------------------- {{{
 :let mapleader = " "
@@ -469,9 +470,6 @@ nnoremap <c-y> :TagbarToggle<CR>
 " Vim-Reason Settings ---------------------- {{{
 autocmd FileType reason map <buffer> <D-M> :ReasonPrettyPrint<Cr>
 " }}}
-
-" https://coderwall.com/p/faceag/format-json-in-vim
-nmap =j :%!python -m json.tool<CR>
 
 " Magit Settings ---------------------- {{{
 nnoremap <leader>gg :Magit<CR>
