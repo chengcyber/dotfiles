@@ -514,10 +514,13 @@ nnoremap <leader>dd :Dash<Cr>
 
 " colorscheme theme Settings ---------------------- {{{
 syntax on
+set termguicolors
 " Color Scheme
 silent! colorscheme gruvbox
 let g:airline#extension#tabline#enabled=1
-let g:airline_theme='gruvbox'
+let g:airline_theme='qwq'
+set background=light
+let g:gruvbox_italic=1
 
 "syntax enable
 "set background=light
