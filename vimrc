@@ -230,6 +230,8 @@ nnoremap N Nzzzv
 :nnoremap <leader>N :tabnext<cr>
 :nnoremap <leader>P :tabprevious<cr>
 """ buffer delete
+nnoremap <leader>= :bn<cr>
+nnoremap <leader>- :bp<cr>
 :nnoremap <leader>kk :bdelete<cr>
 """ Quickfix
 nnoremap <c-q> :copen<cr>
@@ -428,8 +430,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
-nnoremap <leader>n :bn<cr>
-nnoremap <leader>p :bp<cr>
 " }}}
 
 " EasyMotion Settings ---------------------- {{{
