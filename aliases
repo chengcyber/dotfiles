@@ -1,0 +1,19 @@
+# https://unix.stackexchange.com/questions/51818/is-it-possible-to-include-file-in-config-file-of-zsh-how
+# 1. link this file to ~/.aliases
+# 2. add following command to config file, i.e. zshrc, bash_profile
+#    . $HOME/.aliases
+
+# git tricks
+alias gir="git rebase -i origin/develop"
+alias gcd="git checkout develop"
+alias grod="git fetch && git rebase origin/develop"
+alias g-="git checkout @{-1}"
+alias g--="git checkout @{-2}"
+alias lg="log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gdtl="git difftool"
+
+# handy stuff
+alias tosxl="sed -i ' ' 's/PRODUCT_NAME= /PRODUCT_NAME=sxl /' Procfile && sed -i ' ' 's/PRODUCT_NAME= /PRODUCT_NAME=sxl /' Procfile.fe"
+alias tostr="sed -i ' ' 's/PRODUCT_NAME=sxl /PRODUCT_NAME= /' Procfile && sed -i ' ' 's/PRODUCT_NAME=sxl /PRODUCT_NAME= /' Procfile.fe"
+alias benginx="openresty -p devs/nginx -c nginx.conf &"
+
