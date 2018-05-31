@@ -4,9 +4,10 @@
 #    . $HOME/.aliases
 
 # git tricks
+alias grbi2="git rebase -i HEAD~2"
 alias gir="git rebase -i origin/develop"
 alias gcd="git checkout develop"
-alias grod="git fetch && git rebase origin/develop"
+alias grod="git fetch origin develop && git rebase origin/develop"
 alias g-="git checkout @{-1}"
 alias g--="git checkout @{-2}"
 alias lg="log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -16,4 +17,8 @@ alias gdtl="git difftool"
 alias tosxl="sed -i ' ' 's/PRODUCT_NAME= /PRODUCT_NAME=sxl /' Procfile && sed -i ' ' 's/PRODUCT_NAME= /PRODUCT_NAME=sxl /' Procfile.fe"
 alias tostr="sed -i ' ' 's/PRODUCT_NAME=sxl /PRODUCT_NAME= /' Procfile && sed -i ' ' 's/PRODUCT_NAME=sxl /PRODUCT_NAME= /' Procfile.fe"
 alias benginx="openresty -p devs/nginx -c nginx.conf &"
+alias besxl="PRODUCT_NAME=sxl bundle exec rails s"
+alias bestr="PRODUCT_NAME= bundle exec rails s"
+alias betheme="bundle exec strk_build_manifests"
+alias sksxl="PRODUCT_NAME=sxl bundle exec sidekiq -q critical,10 -q mailer,8 -q default,2 -q low,1"
 
