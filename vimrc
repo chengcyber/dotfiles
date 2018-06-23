@@ -242,9 +242,9 @@ nnoremap <leader>- :bp<cr>
 """ Quickfix
 nnoremap <c-q> :copen<cr>
 """ Auto quote a word
-nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+" nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 """ Auto single quote
-nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+" nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 """ grep
 " nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
 """ copy file path
@@ -411,63 +411,147 @@ call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 " }}}
 
+" fzf Settings ---------------------- {{{
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+" Augmenting Ag command using fzf#vim#with_preview function
+"   * fzf#vim#with_preview([[options], preview window, [toggle keys...]])
+"     * For syntax-highlighting, Ruby and any of the following tools are required:
+"       - Highlight: http://www.andre-simon.de/doku/highlight/en/highlight.php
+"       - CodeRay: http://coderay.rubychan.de/
+"       - Rouge: https://github.com/jneen/rouge
+"
+"   :Ag  - Start fzf with hidden preview window that can be enabled with "?" key
+"   :Ag! - Start fzf in fullscreen and display the preview window above
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
+
+" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+
+" Command for git grep
+" - fzf#vim#grep(command, with_column, [options], [fullscreen])
+command! -bang -nargs=* Gg
+      \ call fzf#vim#grep(
+      \   'git grep --line-number --color=always '.shellescape(<q-args>), 0,
+      \   extend(
+      \     {'dir': systemlist('git rev-parse --show-toplevel')[0]},
+      \     <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \   ), <bang>0)
+
+" Likewise, Files command with preview window
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+
+" Search History
+nnoremap <Leader>/ :History/<CR>
+" Command History
+nnoremap <Leader>; :History:<CR>
+" File History
+nnoremap <expr> <Leader>' (expand('%') =~ 'NERD_tree' ? "\<C-w>\<C-w>" : '') . ":History\<CR>"
+" Search Content via current word
+nnoremap <Leader>aa :Ag<Space><C-r><C-w><CR>
+vnoremap <Leader>aa "gy:Ag<Space><C-r>g<CR>
+" Search File
+nnoremap <expr> <Leader>af (expand('%') =~ 'NERD_tree' ? "\<C-w>\<C-w>" : '') . ":Files\<CR>"
+" Commands
+nnoremap <Leader>ac :Commands<CR>
+" Windows
+nnoremap <Leader>aw :Windows<CR>
+" Sinnpets
+nnoremap <Leader>au :Snippets<CR>
+
+" Search Content with Git via current word
+nnoremap <Leader>ga :Gg<Space><C-r><C-w><CR>
+vnoremap <Leader>ga "gy:Gg<Space><C-r>g<CR>
+" Search File
+nnoremap <expr> <Leader>gg (expand('%') =~ 'NERD_tree' ? "\<C-w>\<C-w>" : '') . ":GFiles\<CR>"
+" Git Commits
+nnoremap <Leader>gc :Commits<CR>
+
+" Buffers
+nnoremap <expr> <Leader>bb (expand('%') =~ 'NERD_tree' ? "\<C-w>\<C-w>" : '') . ":Buffers\<CR>"
+nnoremap <Leader>bc :BCommits<CR>
+
+" }}}
+
 " CtrlP Settings ---------------------- {{{
-let g:ctrlp_map = '<c-p>'
-" let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = ''
-let g:ctrlp_max_depth = 40
-let g:ctrlp_max_files = 0
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:100'
-" Cache
-"let g:ctrlp_cache_dir = $HOME . './cache/ctrlp'
-"let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_use_caching = 0
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-        \ --ignore .git
-        \ --ignore .DS_Store
-        \ --ignore tmp
-        \ --ignore images
-        \ --ignore vendor
-        \ --ignore vcr
-        \ --ignore "tags"
-        \ --ignore vcr_cassettes
-        \ --ignore "**/*.(png|jpeg|jpg|gif|bmp)"
-        \ -g ""'
-endif
-" use cmatch extension to speed up
-" note: it does not work on regex mode
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-" switch the clear cache and toggle regex shortcut
-let g:ctrlp_prompt_mappings = {
-  \ 'ToggleRegex()':        ['<F5>'],
-  \ 'PrtClearCache()':      ['<c-r>'],
-  \ }
-" Close NERDTree window
-"let g:ctrlp_dont_split = 'NERD_tree_1'
-" open files via CtrlP only in writable buffer
-"function! CtrlPCommand()
-"  let c = 0
-"  let wincount = winnr('$')
-"  " Don't open it here if current buffer is not writable (e.g. NERDTREE)
-"  while !empty(getbufvar(+expand("<abuf>"), "&buftype")) && c < wincount
-"    exec 'wincmd w'
-"    let c = c + 1
-"  endwhile
-"  exec 'CtrlP'
-"endfunction
-" let g:ctrlp_cmd = 'call CtrlPCommand()'
-let g:ctrlp_cmd = ':NERDTreeClose\|CtrlP'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc|jpg|png|jpeg)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+" let g:ctrlp_map = '<c-p>'
+" " let g:ctrlp_cmd = 'CtrlP'
+" let g:ctrlp_working_path_mode = ''
+" let g:ctrlp_max_depth = 40
+" let g:ctrlp_max_files = 0
+" let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:100'
+" " Cache
+" "let g:ctrlp_cache_dir = $HOME . './cache/ctrlp'
+" "let g:ctrlp_clear_cache_on_exit = 0
+" let g:ctrlp_use_caching = 0
+" " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+" if executable('ag')
+"   " Use Ag over Grep
+"   set grepprg=ag\ --nogroup\ --nocolor
+"   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+"   "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+"   let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+"         \ --ignore .git
+"         \ --ignore .DS_Store
+"         \ --ignore tmp
+"         \ --ignore images
+"         \ --ignore vendor
+"         \ --ignore vcr
+"         \ --ignore "tags"
+"         \ --ignore vcr_cassettes
+"         \ --ignore "**/*.(png|jpeg|jpg|gif|bmp)"
+"         \ -g ""'
+" endif
+" " use cmatch extension to speed up
+" " note: it does not work on regex mode
+" " let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+" " switch the clear cache and toggle regex shortcut
+" let g:ctrlp_prompt_mappings = {
+"   \ 'ToggleRegex()':        ['<F5>'],
+"   \ 'PrtClearCache()':      ['<c-r>'],
+"   \ }
+" " Close NERDTree window
+" "let g:ctrlp_dont_split = 'NERD_tree_1'
+" " open files via CtrlP only in writable buffer
+" "function! CtrlPCommand()
+" "  let c = 0
+" "  let wincount = winnr('$')
+" "  " Don't open it here if current buffer is not writable (e.g. NERDTREE)
+" "  while !empty(getbufvar(+expand("<abuf>"), "&buftype")) && c < wincount
+" "    exec 'wincmd w'
+" "    let c = c + 1
+" "  endwhile
+" "  exec 'CtrlP'
+" "endfunction
+" " let g:ctrlp_cmd = 'call CtrlPCommand()'
+" let g:ctrlp_cmd = ':NERDTreeClose\|CtrlP'
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+"   \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc|jpg|png|jpeg)$',
+"   \ 'link': 'some_bad_symbolic_links',
+"   \ }
 " }}}
 
 " Airline Settings ---------------------- {{{
@@ -511,10 +595,10 @@ let g:user_emmet_leader_key='<c-e>'
 " }}}
 
 " Ack Settings ---------------------- {{{
-nnoremap <leader>a :Ack!<space>
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
+" nnoremap <leader>a :Ack!<space>
+" if executable('ag')
+"   let g:ackprg = 'ag --vimgrep'
+" endif
 " }}}
 
 " UltiSnips Settings ---------------------- {{{
@@ -571,7 +655,7 @@ autocmd FileType reason map <buffer> <D-M> :ReasonPrettyPrint<Cr>
 " }}}
 
 " Magit Settings ---------------------- {{{
-nnoremap <leader>gg :Magit<CR>
+" nnoremap <leader>gg :Magit<CR>
 " }}}
 
 " Dash Settings ---------------------- {{{
@@ -579,12 +663,16 @@ nnoremap <leader>dd :Dash<Cr>
 " }}}
 
 " JSDoc Settings ---------------------- {{{
-nnoremap <leader>jsd ?function<cr>:noh<cr>:call JSDocAdd()<cr>
+let g:jsdoc_tags = {
+    \   'returns': 'return',
+    \ }
+autocmd BufNewFile,BufRead *.js,*.jsx nmap <silent> <LocalLeader>jsd <Plug>(jsdoc)
+autocmd BufNewFile,BufRead *.ts,*.tsx nmap <silent> <LocalLeader>jsd <Plug>(jsdoc)
 " }}}
 
 " Easy Align Settings ---------------------- {{{
-xmap ga <Plug>(LiveEasyAlign)
-nmap ga <Plug>(LiveEasyAlign)
+" xmap ga <Plug>(LiveEasyAlign)
+" nmap ga <Plug>(LiveEasyAlign)
 " }}}
 
 " colorscheme theme Settings ---------------------- {{{
