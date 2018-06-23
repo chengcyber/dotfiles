@@ -1,59 +1,66 @@
 " type "za" for fold and unfold
 
-" Vundle Settings  ---------------------- {{{
-" required
-set nocompatible        " be improved required
-filetype off            " required
+" Plug Settings  ---------------------- {{{
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" Install Plug Script
+let s:vim_plug_path = expand('~/.vim/autoload/plug.vim')
+if !filereadable(s:vim_plug_path)
+  echo 'Installing vim-plug...'
+  silent !mkdir -p ~/.vim/autoload
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  execute 'source ' . fnameescape(s:vim_plug_path)
+endif
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-""""""""""""""""""""""""""""""
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+""" Make sure you use single quotes
 
 """==== Essential ====
 " Need compile, see https://github.com/Valloric/YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/nerdtree'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'scrooloose/nerdtree'
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 " Need compile, see https://github.com/JazzCore/ctrlp-cmatcher
-Plugin 'JazzCore/ctrlp-cmatcher'
-Plugin 'mileszs/ack.vim'
-Plugin 'easymotion/vim-easymotion'
+" Plugin 'JazzCore/ctrlp-cmatcher'
+" Plug 'FelikZ/ctrlp-py-matcher'
+" Plug 'mileszs/ack.vim'
+Plug 'easymotion/vim-easymotion'
 
 """==== Productivity ====
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'mattn/emmet-vim'
-Plugin 'godlygeek/tabular'
-Plugin 'jreybert/vimagit'
-Plugin 'tomtom/tcomment_vim'
+Plug 'haya14busa/incsearch.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'mattn/emmet-vim'
+Plug 'godlygeek/tabular'
+" Plug 'jreybert/vimagit'
+Plug 'tomtom/tcomment_vim'
 " Navigate tag file
 " https://github.com/maxbrunsfeld/vim-config/blob/master/ctags
 " https://stackoverflow.com/questions/4777366/recommended-vim-plugins-for-javascript-coding/5893600#5893600
 " npm install -g git+https://github.com/ramitos/jsctags.git
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 
 " Track the engine.
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'rizzatti/dash.vim'
+Plug 'honza/vim-snippets'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'rizzatti/dash.vim'
 
 """==== Syntax Support ====
-Plugin 'leafgarland/typescript-vim'
-Plugin 'reasonml-editor/vim-reason'
-Plugin 'joegesualdo/jsdoc.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'reasonml-editor/vim-reason'
+Plug 'joegesualdo/jsdoc.vim'
 
 """==== Util ====
-Plugin 'CodeFalling/fcitx-vim-osx'
-Plugin 'junegunn/vim-easy-align'
+Plug 'CodeFalling/fcitx-vim-osx'
+Plug 'junegunn/vim-easy-align'
 
 """==== UI ====
 " Color Schemes
@@ -62,24 +69,23 @@ Plugin 'junegunn/vim-easy-align'
 "Plugin 'kudabux/vim-srcery-drk'
 "Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 "Plugin 'altercation/vim-colors-solarized'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'morhetz/gruvbox'
 
 """"""""""""""""""""""""""""""
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+" " Initialize plugin system
+call plug#end()
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
 " Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" :PlugInstall    - installs plugins
+" :PlugClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
-" see :h vundle for more details or wiki for FAQ
+" see :h plug for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 " }}}
 
