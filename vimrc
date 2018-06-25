@@ -39,6 +39,7 @@ Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim'
 Plug 'godlygeek/tabular'
 " Plug 'jreybert/vimagit'
+Plug 'jiangmiao/auto-pairs'
 Plug 'tomtom/tcomment_vim'
 " Navigate tag file
 " https://github.com/maxbrunsfeld/vim-config/blob/master/ctags
@@ -649,6 +650,10 @@ endif
 
 " TagBar Settings ---------------------- {{{
 nnoremap <c-y> :TagbarToggle<CR>
+" }}}
+"
+" Auto-Pairs Settings ---------------------- {{{
+let g:AutoPairsMapSpace = 0
 " }}}
 
 " Vim-Reason Settings ---------------------- {{{
