@@ -72,6 +72,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 """"""""""""""""""""""""""""""
 " All of your Plugins must be added before the following line
@@ -679,7 +680,8 @@ autocmd BufNewFile,BufRead *.ts,*.tsx nmap <silent> <LocalLeader>jsd <Plug>(jsdo
 syntax on
 set termguicolors
 " Color Scheme
-silent! colorscheme gruvbox
+" silent! colorscheme gruvbox
+silent! colorscheme dracula
 let g:airline#extension#tabline#enabled=1
 let g:airline_theme='qwq'
 set background=dark
