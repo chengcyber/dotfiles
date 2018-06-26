@@ -145,13 +145,6 @@ autocmd FileAppendPre * call TrimWhiteSpace()
 autocmd FilterWritePre * call TrimWhiteSpace()
 autocmd BufWritePre * call TrimWhiteSpace()
 
-""" Fold Settings
-" set nofoldenable
-" set foldmethod=indent
-" set foldnestmax=10
-" set foldcolumn=0
-" setlocal foldlevel=2
-" set foldclose=all
 
 " Auto Save when losing focus
 "au FocusLost * :silent! wall
@@ -210,7 +203,18 @@ autocmd BufNewFile,BufRead *.wxml set filetype=html
 "}}}
 
 " Folder Settings ---------------------- {{{
+" set nofoldenable
+"" manual | indent | expr | marker | syntax | diff
+set foldmethod=syntax
+" set foldnestmax=10
+set foldcolumn=1
+set foldlevelstart=99
+let javascript_fold=1
+let typescript_fold=1
+" setlocal foldlevel=2
+" set foldclose=all
 autocmd FileType vim,c++,txt setlocal foldmethod=marker
+autocmd FileType vim,c++,txt setlocal foldlevel=0
 " }}}
 
 " Key Mapping Settings ---------------------- {{{
