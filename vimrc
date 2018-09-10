@@ -38,7 +38,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim'
 Plug 'godlygeek/tabular'
-" Plug 'jreybert/vimagit'
+Plug 'jreybert/vimagit'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tomtom/tcomment_vim'
 " Navigate tag file
