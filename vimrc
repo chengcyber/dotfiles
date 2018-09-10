@@ -475,7 +475,8 @@ nnoremap <Leader>; :History:<CR>
 " File History
 nnoremap <expr> <Leader>' (expand('%') =~ 'NERD_tree' ? "\<C-w>\<C-w>" : '') . ":History\<CR>"
 " Search Content via current word
-nnoremap <Leader>aa :Ag<Space><C-r><C-w><CR>
+" nnoremap <Leader>aa :Ag<Space><C-r><C-w><CR>
+nnoremap <Leader>aa :Ag<Space>
 vnoremap <Leader>aa "gy:Ag<Space><C-r>g<CR>
 " Search File
 nnoremap <expr> <Leader>af (expand('%') =~ 'NERD_tree' ? "\<C-w>\<C-w>" : '') . ":Files\<CR>"
@@ -487,7 +488,8 @@ nnoremap <Leader>aw :Windows<CR>
 nnoremap <Leader>au :Snippets<CR>
 
 " Search Content with Git via current word
-nnoremap <Leader>ga :Gg<Space><C-r><C-w><CR>
+" nnoremap <Leader>ga :Gg<Space><C-r><C-w><CR>
+nnoremap <Leader>ga :Gg<Space>
 vnoremap <Leader>ga "gy:Gg<Space><C-r>g<CR>
 " Search File
 nnoremap <expr> <Leader>gg (expand('%') =~ 'NERD_tree' ? "\<C-w>\<C-w>" : '') . ":GFiles\<CR>"
