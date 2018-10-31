@@ -55,6 +55,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rizzatti/dash.vim'
 
 """==== Syntax Support ====
+Plug 'w0rp/ale'
 Plug 'leafgarland/typescript-vim'
 Plug 'reasonml-editor/vim-reason'
 Plug 'joegesualdo/jsdoc.vim'
@@ -709,4 +710,20 @@ let g:gruvbox_italic=1
 "    set background=dark
 "endif
 
+""" }}}
+
+" ALE Settings ---------------------- {{{
+let g:airline#extensions#ale#enabled = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%severity% %code%] %s [%linter%]'
+
+""" fix
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'typescript': ['prettier'],
+\   'css': ['prettier'],
+\}
+let g:ale_javascript_prettier_options = '--print-width 80 --single-quote --trailing-comma es5 --arrow-parens always'
 """ }}}
