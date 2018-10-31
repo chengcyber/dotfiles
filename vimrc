@@ -614,6 +614,7 @@ let g:user_emmet_leader_key='<c-e>'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+filetype plugin indent on
 " }}}
 
 " Indent-Guide Settings ---------------------- {{{
