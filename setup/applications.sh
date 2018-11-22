@@ -48,7 +48,8 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fancy_echo "Installing python and setting up macvim"
 brew install python3
 brew install macvim --with-override-system-vim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# Deprecated: using Vim-Plug now.
+# git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # brew install neovim/neovim/neovim
 #curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 #    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
