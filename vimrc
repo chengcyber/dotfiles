@@ -58,7 +58,7 @@ Plug 'rizzatti/dash.vim'
 Plug 'w0rp/ale'
 Plug 'leafgarland/typescript-vim'
 Plug 'reasonml-editor/vim-reason'
-Plug 'joegesualdo/jsdoc.vim'
+" Plug 'joegesualdo/jsdoc.vim'
 
 """==== Util ====
 Plug 'CodeFalling/fcitx-vim-osx'
@@ -677,11 +677,12 @@ nnoremap <leader>dd :Dash<Cr>
 " }}}
 
 " JSDoc Settings ---------------------- {{{
-let g:jsdoc_tags = {
-    \   'returns': 'return',
-    \ }
-autocmd BufNewFile,BufRead *.js,*.jsx nmap <silent> <LocalLeader>jsd <Plug>(jsdoc)
-autocmd BufNewFile,BufRead *.ts,*.tsx nmap <silent> <LocalLeader>jsd <Plug>(jsdoc)
+" let g:jsdoc_tags = {
+"     \   'returns': 'return',
+"     \ }
+" autocmd BufNewFile,BufRead *.js,*.jsx nmap <silent> <LocalLeader>jd <Plug>(jsdoc)
+" autocmd BufNewFile,BufRead *.ts,*.tsx nmap <silent> <LocalLeader>jd <Plug>(jsdoc)
+" nnoremap <leader>jd :call JSDocAdd()<Cr>
 " }}}
 
 " Easy Align Settings ---------------------- {{{
