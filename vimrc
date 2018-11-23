@@ -126,6 +126,9 @@ set lazyredraw
 " https://coderwall.com/p/faceag/format-json-in-vim
 nmap =j :%!python -m json.tool<CR>
 
+" No longer prompt for file changes outside vim
+set autoread
+
 " Backups
 set backup
 set noswapfile
