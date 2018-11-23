@@ -718,12 +718,17 @@ let g:gruvbox_italic=1
 """ }}}
 
 " ALE Settings ---------------------- {{{
-let g:ale_enabled = 0
+let g:ale_enabled = 1
 
 let g:airline#extensions#ale#enabled = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%severity% %code%] %s [%linter%]'
+
+""" lint
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_save = 1
 
 """ fix
 let g:ale_fix_on_save = 0
@@ -732,5 +737,9 @@ let g:ale_fixers = {
 \   'typescript': ['prettier'],
 \   'css': ['prettier'],
 \}
+" let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_javascript_prettier_options = '--print-width 80 --single-quote --trailing-comma es5 --arrow-parens always'
+
+""" completion
+let g:ale_completion_enabled = 0
 """ }}}
