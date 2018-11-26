@@ -119,6 +119,9 @@ set listchars=extends:❯,precedes:❮,trail:·,extends:>,tab:▸\ ,eol:¬
 set showbreak=↪
 set t_Co=256
 
+" completeopt
+set completeopt=menu,menuone,preview,noselect,noinsert
+
 " solve performance issue with iterm2
 set ttyfast
 set lazyredraw
