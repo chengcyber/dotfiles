@@ -7,6 +7,12 @@ source $HOME/z.sh
 # use macvim instead of vim
 alias vim="mvim -v"
 
+# fzf default command
+if command -v ag &> /dev/null; then
+  # Set ag as the default source for fzf
+  export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
