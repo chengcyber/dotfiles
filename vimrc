@@ -20,7 +20,7 @@ call plug#begin('~/.vim/plugged')
 
 """==== Essential ====
 " Need compile, see https://github.com/Valloric/YouCompleteMe
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python ./install.py --ts-completer' }
 Plug 'scrooloose/nerdtree'
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -331,6 +331,10 @@ nnoremap <C-l> <C-w>l
 " }}}
 
 " YouCompleteMe Settings ---------------------- {{{
+" YCM only works with official Python distributions
+" See https://github.com/Valloric/YouCompleteMe/issues/1241
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+
 """ remove default TAB to solve conflict with UltiSnips
 "let g:ycm_key_list_select_completion = ['<Down>']
 "let g:ycm_key_list_previous_completion = ['<Up>']
