@@ -58,6 +58,7 @@ Plug 'rizzatti/dash.vim'
 Plug 'w0rp/ale'
 Plug 'leafgarland/typescript-vim'
 Plug 'reasonml-editor/vim-reason'
+Plug 'editorconfig/editorconfig-vim'
 " Plug 'joegesualdo/jsdoc.vim'
 
 """==== Util ====
