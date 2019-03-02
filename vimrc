@@ -137,6 +137,9 @@ nmap =j :%!python -m json.tool<CR>
 " No longer prompt for file changes outside vim
 set autoread
 
+" try reuse open, retry reuse tab, newtab fallback
+set switchbuf=useopen,usetab,newtab
+
 " Backups
 set backup
 set noswapfile
