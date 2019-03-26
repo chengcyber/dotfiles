@@ -279,12 +279,13 @@ inoremap jk <esc>
 cnoremap jk <C-c>
 
 " Switch functionality
-nnoremap : ;
-nnoremap ; :
-vnoremap : ;
-vnoremap ; :
+" nnoremap : ;
+" nnoremap ; :
+" vnoremap : ;
+" vnoremap ; :
 nnoremap 0 ^
 nnoremap ^ 0
+nnoremap <C-x><C-s> :w
 
 " copy to line end
 nnoremap Y y$
@@ -328,6 +329,10 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+nnoremap <leader>wj <C-w>j
+nnoremap <leader>wk <C-w>k
+nnoremap <leader>wh <C-w>h
+nnoremap <leader>wl <C-w>l
 " }}}
 
 " Abbreviation Settings ---------------------- {{{
