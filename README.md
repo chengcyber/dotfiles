@@ -1,12 +1,19 @@
 # Environment
 
 macOS Sierra 10.12.1
+Linux Ubuntu 18.04
 
 # Installation
 
 ```
 git clone git@github.com:kimochg/dotfiles.git ~/dotfiles && cd ~/dotfiles/setup && chmod a+x setup.sh && ./setup.sh
 ```
+
+# Amazing Addons
+
+- [Rg](https://github.com/BurntSushi/ripgrep)
+- [Ag](https://github.com/ggreer/the_silver_searcher)
+- [facebook pathpicker](https://facebook.github.io/PathPicker/)
 
 # Setup
 
@@ -56,6 +63,20 @@ Remember `tmux kill-server`, which totally reset your tmux config.
 
 # Tmux
 
+## Prerequisite
+
+### Mac
+
+```
+brew install reattach-to-user-namespace
+```
+
+### Ubuntu
+
+```
+sudo apt-get install xclip # or xsel
+```
+
 ## Plugins
 
 - [TPM](https://github.com/tmux-plugins/tpm)
@@ -74,3 +95,5 @@ Remember `tmux kill-server`, which totally reset your tmux config.
 
 - [colbycheeze/dotfiles](https://github.com/colbycheeze/dotfiles)
 - [jcxia43/dotfiles](https://github.com/jcxia43/dotfiles)
+- [gpakosz/.tmux](https://github.com/gpakosz/.tmux)
+
