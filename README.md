@@ -9,6 +9,14 @@ Linux Ubuntu 18.04
 git clone git@github.com:kimochg/dotfiles.git ~/dotfiles && cd ~/dotfiles/setup && chmod a+x setup.sh && ./setup.sh
 ```
 
+## Manually Link
+
+```
+ln -s -f `pwd`/tmux ~/.tmux
+ln -s -f `pwd`/tmux.conf ~/.tmux.conf
+ln -s -f `pwd`/tmux.conf.local ~/.tmux.conf.local
+```
+
 # Amazing Addons
 
 - [Rg](https://github.com/BurntSushi/ripgrep)
