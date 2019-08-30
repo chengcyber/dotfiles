@@ -99,7 +99,8 @@ if has("gui_macvim")
   set macligatures
 endif
 
-set guifont=monofur\ for\ Powerline:h18
+" set guifont=monofur\ for\ Powerline:h18
+set guifont=Dank\ Mono:h16
 " if system("osascript -e 'tell application \"Finder\" to get bounds of window of desktop' | cut -d ' ' -f 4") > 900
 "   set guifont=Fira\ Mono\ for\ Powerline:h23
 " else
@@ -201,6 +202,7 @@ set wildignore+=*/bobcat-api/app/assets/javascripts/v4/*
 set wildignore+=*/app/assets/javascripts/v4/*
 set wildignore+=*/bobcat-fe/js/vendor/*
 set wildignore+=*/.cache-loader/*
+set wildignore+=*/assets_v3/dist/*
 " }}}
 
 " Search Settings ---------------------- {{{
@@ -738,7 +740,7 @@ let g:gruvbox_italic=1
 """ }}}
 
 " ALE Settings ---------------------- {{{
-let g:ale_enabled = 1
+" let g:ale_enabled = 1
 
 let g:airline#extensions#ale#enabled = 1
 let g:ale_echo_msg_error_str = 'E'
@@ -747,18 +749,24 @@ let g:ale_echo_msg_format = '[%severity% %code%] %s [%linter%]'
 
 """ lint
 let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
+" let g:ale_linters_explicit = 1
+let g:ale_linters = {
+\   'javascript': ['eslint', 'prettier'],
+\   'typescript': ['tsserver', 'tslint', 'prettier'],
+\}
 
 """ fix
-let g:ale_fix_on_save = 0
+let g:ale_fix_on_save = 1
 let g:ale_fixers = {
-\   'javascript': ['prettier'],
 \   'typescript': ['prettier'],
 \   'css': ['prettier'],
 \}
-" let g:ale_javascript_prettier_use_local_config = 1
-let g:ale_javascript_prettier_options = '--print-width 80 --single-quote --trailing-comma es5 --arrow-parens always'
+" \   'javascript': ['prettier'],
+let g:ale_javascript_prettier_use_local_config = 1
+" let g:ale_javascript_prettier_options = '--print-width 80 --single-quote --trailing-comma es5 --arrow-parens always'
 
 """ completion
 let g:ale_completion_enabled = 0
