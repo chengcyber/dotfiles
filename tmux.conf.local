@@ -266,7 +266,7 @@ tmux_conf_theme_clock_style='24'
 #   - false (default)
 # on macOS, this requires installing reattach-to-user-namespace, see README.md
 # on Linux, this requires xsel or xclip
-tmux_conf_copy_to_os_clipboard=true
+tmux_conf_copy_to_os_clipboard=false
 
 
 # -- user customizations -------------------------------------------------------
@@ -292,21 +292,3 @@ tmux_conf_copy_to_os_clipboard=true
 
 # move status line to top
 #set -g status-position top
-
-# Connect tmux to the Linux clipboard service
-# For vi copy mode bindings
-bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel 'xclip -selection clipboard -i'
-
-set -g set-clipboard on
-
-set -g @tpm_plugins '          \
-  tmux-plugins/tpm             \
-  tmux-plugins/tmux-sensible   \
-  tmux-plugins/tmux-continuum  \
-  tmux-plugins/tmux-resurrect  \
-  Morantron/tmux-fingers       \
-'
-
-set -g @fingers-key G
-
-run -b '~/.tmux/plugins/tpm/tpm'
