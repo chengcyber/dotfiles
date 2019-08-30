@@ -9,13 +9,18 @@ Linux Ubuntu 18.04
 git clone git@github.com:kimochg/dotfiles.git ~/dotfiles && cd ~/dotfiles/setup && chmod a+x setup.sh && ./setup.sh
 ```
 
-## Manually Link
+## Manually Install Tmux
 
 ```
-ln -s -f `pwd`/tmux ~/.tmux
+mkdir -p ~/.tmux
+mkdir -p ~/.tmux/plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -s -f `pwd`/tmux.conf ~/.tmux.conf
 ln -s -f `pwd`/tmux.conf.local ~/.tmux.conf.local
 ```
+
+1. run tmux
+2. Press prefix + I (capital i, as in Install) to fetch the plugin.
 
 # Amazing Addons
 
