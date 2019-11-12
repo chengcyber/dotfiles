@@ -363,16 +363,18 @@ let g:ycm_seed_identifiers_with_syntax = 1
 
 "" limit the ycmd open in these filetypes
 let g:ycm_filetype_whitelist = {
-      \   'sh': 1,
-      \   'zsh': 1,
-      \   'vim': 1,
-      \   'c': 1,
-      \   'cpp': 1,
-      \   'python': 1,
-      \   'javascript': 1,
-      \   'typescript': 1,
-      \   'go': 1,
-      \   'java': 1,
+      \ 'c': 1,
+      \ 'cpp': 1,
+      \ 'go': 1,
+      \ 'java': 1,
+      \ 'javascript': 1,
+      \ 'javascript.jsx': 1,
+      \ 'python': 1,
+      \ 'sh': 1,
+      \ 'typescript': 1,
+      \ 'typescript.tsx': 1,
+      \ 'vim': 1,
+      \ 'zsh': 1,
       \ }
 " enhance the default trigger
 let g:ycm_semantic_triggers =  {
@@ -391,6 +393,7 @@ let g:ycm_semantic_triggers =  {
       \ }
 
 " shortcuts
+nnoremap <Leader>jf :YcmCompleter FixIt<CR>
 nnoremap <Leader>jd :YcmCompleter GoToDeclaration<CR>
 nnoremap <Leader>ji :YcmCompleter GoToInclude<CR>
 nnoremap <Leader>jj :YcmCompleter GoToDefinition<CR>
@@ -420,6 +423,7 @@ let NERDTreeQuitOnOpen=1
 " Key mapping
 """ shortcut to open NERDTree
 noremap <D-d> :NERDTreeToggle<CR>
+nnoremap <leader>op :NERDTreeToggle<CR>
 nnoremap <leader>l :NERDTreeFind<CR>
 nnoremap <leader>B :NERDTreeFromBookmark<Space>
 
@@ -503,8 +507,10 @@ nnoremap <Leader>; :History:<CR>
 nnoremap <expr> <Leader>' (expand('%') =~ 'NERD_tree' ? "\<C-w>\<C-w>" : '') . ":History\<CR>"
 " Search Content via current word
 " nnoremap <Leader>aa :Ag<Space><C-r><C-w><CR>
-nnoremap <Leader>aa :Ag<Space>
-vnoremap <Leader>aa "gy:Ag<Space><C-r>g<CR>
+nnoremap <Leader>as :Ag<Space>
+vnoremap <Leader>as "gy:Ag<Space><C-r>g<CR>
+nnoremap <Leader>aa :Rg<Space>
+vnoremap <Leader>aa "gy:Rg<Space><C-r>g<CR>
 " Search File
 nnoremap <expr> <Leader>af (expand('%') =~ 'NERD_tree' ? "\<C-w>\<C-w>" : '') . ":Files\<CR>"
 " Commands
