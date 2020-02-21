@@ -399,7 +399,8 @@ nnoremap <Leader>jf :YcmCompleter FixIt<CR>
 nnoremap <Leader>jd :YcmCompleter GoToDeclaration<CR>
 nnoremap <Leader>ji :YcmCompleter GoToInclude<CR>
 nnoremap <Leader>jj :YcmCompleter GoToDefinition<CR>
-nnoremap <Leader>jr :YcmCompleter GoToReferences<CR>
+nnoremap <Leader>jk :YcmCompleter GoToReferences<CR>
+nnoremap <Leader>jr :YcmCompleter RefactorRename<Space>
 " }}}
 
 " Nerdtree Settings ---------------------- {{{
