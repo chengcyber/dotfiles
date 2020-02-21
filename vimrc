@@ -144,6 +144,8 @@ set switchbuf=useopen,usetab,newtab
 " Backups
 set backup
 set noswapfile
+" undo even after close file
+set undofile
 
 set undodir=~/.vim/tmp/undo//
 set backupdir=~/.vim/tmp/backup//
