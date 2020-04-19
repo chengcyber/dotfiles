@@ -20,7 +20,7 @@ call plug#begin('~/.vim/plugged')
 
 """==== Essential ====
 " Need compile, see https://github.com/Valloric/YouCompleteMe
-Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python ./install.py --ts-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python3 ./install.py --ts-completer' }
 Plug 'scrooloose/nerdtree'
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -48,7 +48,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'majutsushi/tagbar'
 
 " Track the engine.
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -350,7 +350,7 @@ nnoremap <leader>wl <C-w>l
 " YouCompleteMe Settings ---------------------- {{{
 " YCM only works with official Python distributions
 " See https://github.com/Valloric/YouCompleteMe/issues/1241
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
 
 """ remove default TAB to solve conflict with UltiSnips
 "let g:ycm_key_list_select_completion = ['<Down>']
