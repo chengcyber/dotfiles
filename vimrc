@@ -20,7 +20,7 @@ call plug#begin('~/.vim/plugged')
 
 """==== Essential ====
 " Need compile, see https://github.com/Valloric/YouCompleteMe
-Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python3 ./install.py --ts-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': '/usr/local/bin/python3 ./install.py --ts-completer' }
 Plug 'scrooloose/nerdtree'
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -50,13 +50,13 @@ Plug 'majutsushi/tagbar'
 " Track the engine.
 " Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rizzatti/dash.vim'
 
 """==== Syntax Support ====
 Plug 'w0rp/ale'
-Plug 'leafgarland/typescript-vim'
+" Plug 'leafgarland/typescript-vim'
 Plug 'reasonml-editor/vim-reason'
 Plug 'editorconfig/editorconfig-vim'
 " Plug 'joegesualdo/jsdoc.vim'
@@ -145,11 +145,22 @@ set switchbuf=useopen,usetab,newtab
 set backup
 set noswapfile
 " undo even after close file
-set undofile
+if !isdirectory($HOME."/.vim")
+    call mkdir($HOME."/.vim", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/tmp")
+    call mkdir($HOME."/.vim/tmp", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/tmp/undo")
+    call mkdir($HOME."/.vim/tmp/undo", "", 0700)
+endif
 
 set undodir=~/.vim/tmp/undo//
 set backupdir=~/.vim/tmp/backup//
 set directory=~/.vim/tmp/swap//
+
+set undofile
+set nospell
 
 """ highlight trailing space and remove them when save
 scriptencoding utf-8
@@ -350,7 +361,8 @@ nnoremap <leader>wl <C-w>l
 " YouCompleteMe Settings ---------------------- {{{
 " YCM only works with official Python distributions
 " See https://github.com/Valloric/YouCompleteMe/issues/1241
-let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
+" let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
+let g:ycm_server_python_interpreter = '/usr/local/bin/python3'
 
 """ remove default TAB to solve conflict with UltiSnips
 "let g:ycm_key_list_select_completion = ['<Down>']
@@ -371,10 +383,12 @@ let g:ycm_filetype_whitelist = {
       \ 'java': 1,
       \ 'javascript': 1,
       \ 'javascript.jsx': 1,
+      \ 'javascriptreact': 1,
       \ 'python': 1,
       \ 'sh': 1,
       \ 'typescript': 1,
       \ 'typescript.tsx': 1,
+      \ 'typescriptreact': 1,
       \ 'vim': 1,
       \ 'zsh': 1,
       \ }
@@ -749,7 +763,7 @@ let g:gruvbox_italic=1
 """ }}}
 
 " ALE Settings ---------------------- {{{
-" let g:ale_enabled = 1
+let g:ale_enabled = 1
 
 let g:airline#extensions#ale#enabled = 1
 let g:ale_echo_msg_error_str = 'E'
@@ -764,13 +778,18 @@ let g:ale_lint_on_save = 1
 " let g:ale_linters_explicit = 1
 let g:ale_linters = {
 \   'javascript': ['eslint', 'prettier'],
-\   'typescript': ['tsserver', 'tslint', 'prettier'],
+\   'typescript': ['tsserver', 'eslint', 'tslint', 'prettier'],
+\}
+
+let g:ale_linter_aliases = {
+\  'typescriptreact': 'typescript',
 \}
 
 """ fix
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   'typescript': ['prettier'],
+\   'typescriptreact': ['prettier'],
 \   'css': ['prettier'],
 \}
 " \   'javascript': ['prettier'],
@@ -779,4 +798,73 @@ let g:ale_javascript_prettier_use_local_config = 1
 
 """ completion
 let g:ale_completion_enabled = 0
+""" }}}
+
+" SyntaxAttr Settings ---------------------- {{{
+" EXAMPLE SETUP
+"
+" Show the syntax group name of the item under cursor.
+map -a  :call SyntaxAttr()<CR>
+
+function! SyntaxAttr()
+     let synid = ""
+     let guifg = ""
+     let guibg = ""
+     let gui   = ""
+
+     let id1  = synID(line("."), col("."), 1)
+     let tid1 = synIDtrans(id1)
+
+     if synIDattr(id1, "name") != ""
+    let synid = "group: " . synIDattr(id1, "name")
+    if (tid1 != id1)
+         let synid = synid . '->' . synIDattr(tid1, "name")
+    endif
+    let id0 = synID(line("."), col("."), 0)
+    if (synIDattr(id1, "name") != synIDattr(id0, "name"))
+         let synid = synid .  " (" . synIDattr(id0, "name")
+         let tid0 = synIDtrans(id0)
+         if (tid0 != id0)
+        let synid = synid . '->' . synIDattr(tid0, "name")
+         endif
+         let synid = synid . ")"
+    endif
+     endif
+
+     " Use the translated id for all the color & attribute lookups; the linked id yields blank values.
+     if (synIDattr(tid1, "fg") != "" )
+    let guifg = " guifg=" . synIDattr(tid1, "fg") . "(" . synIDattr(tid1, "fg#") . ")"
+     endif
+     if (synIDattr(tid1, "bg") != "" )
+    let guibg = " guibg=" . synIDattr(tid1, "bg") . "(" . synIDattr(tid1, "bg#") . ")"
+     endif
+     if (synIDattr(tid1, "bold"     ))
+    let gui   = gui . ",bold"
+     endif
+     if (synIDattr(tid1, "italic"   ))
+    let gui   = gui . ",italic"
+     endif
+     if (synIDattr(tid1, "reverse"  ))
+    let gui   = gui . ",reverse"
+     endif
+     if (synIDattr(tid1, "inverse"  ))
+    let gui   = gui . ",inverse"
+     endif
+     if (synIDattr(tid1, "underline"))
+    let gui   = gui . ",underline"
+     endif
+     if (gui != ""                  )
+    let gui   = substitute(gui, "^,", " gui=", "")
+     endif
+
+     echohl MoreMsg
+     let message = synid . guifg . guibg . gui
+     if message == ""
+    echohl WarningMsg
+    let message = "<no syntax group here>"
+     endif
+     echo message
+     echohl None
+endfunction
+
 """ }}}
