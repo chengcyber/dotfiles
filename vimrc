@@ -308,6 +308,7 @@ nnoremap Y y$
 noremap gy "+y
 " copy whole file to system clipboard
 nnoremap gY gg"+yG
+noremap gp "+p
 
 vnoremap u y
 vnoremap gu u
