@@ -33,6 +33,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 
 """==== Productivity ====
+Plug 'justinmk/vim-sneak'
 Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
