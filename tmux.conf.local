@@ -266,7 +266,7 @@ tmux_conf_theme_clock_style='24'
 #   - false (default)
 # on macOS, this requires installing reattach-to-user-namespace, see README.md
 # on Linux, this requires xsel or xclip
-tmux_conf_copy_to_os_clipboard=false
+tmux_conf_copy_to_os_clipboard=true
 
 
 # -- user customizations -------------------------------------------------------
@@ -299,9 +299,11 @@ set -g @tpm_plugins '              \
       tmux-plugins/tpm             \
       tmux-plugins/tmux-sensible   \
       tmux-plugins/tmux-resurrect  \
+      tmux-plugins/tmux-continuum  \
       Morantron/tmux-fingers       \
       '
+
 set -g @fingers-key G
 
  # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
- run '~/.tmux/plugins/tpm/tpm'
+run '~/.tmux/plugins/tpm/tpm'
