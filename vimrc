@@ -31,6 +31,7 @@ Plug 'junegunn/fzf.vim'
 " Plug 'FelikZ/ctrlp-py-matcher'
 " Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'kassio/neoterm'
 
 """==== Productivity ====
 Plug 'justinmk/vim-sneak'
@@ -100,8 +101,10 @@ if has("gui_macvim")
   set macligatures
 endif
 
+set guifont=Fira\ Mono\ for\ Powerline:h16
+" set guifont=Source\ Code\ Pro\ for\ Powerline:h18
 " set guifont=monofur\ for\ Powerline:h18
-set guifont=Dank\ Mono:h16
+" set guifont=Dank\ Mono:h16
 " if system("osascript -e 'tell application \"Finder\" to get bounds of window of desktop' | cut -d ' ' -f 4") > 900
 "   set guifont=Fira\ Mono\ for\ Powerline:h23
 " else
@@ -745,8 +748,8 @@ nnoremap <leader>dd :Dash<Cr>
 syntax on
 set termguicolors
 " Color Scheme
-" silent! colorscheme gruvbox
-silent! colorscheme dracula
+silent! colorscheme gruvbox
+" silent! colorscheme dracula
 set background=dark
 let g:airline#extension#tabline#enabled=1
 let g:airline_theme='qwq'
