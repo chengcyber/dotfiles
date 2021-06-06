@@ -22,7 +22,7 @@ source ~/dotfiles/setup/functions.sh
 dotfiles=(
 tmux.conf
 vimrc
-config/nvimrc
+config/nvim/init.vim
 )
 
 fancy_echo "Backup current config"
