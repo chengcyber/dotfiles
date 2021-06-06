@@ -1,61 +1,69 @@
 " Plugin Settings ----------------- {{{
-" Specify a directory for plugins
+"
+" Install Plug Script
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
+
 " Make sure you use single quotes
 
 " ===== Essentail =====
   Plug 'scrooloose/nerdtree'
-  Plug 'mileszs/ack.vim'
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'ctrlpvim/ctrlp.vim'
-  "https://github.com/JazzCore/ctrlp-cmatcher
-  Plug 'JazzCore/ctrlp-cmatcher'
-  Plug 'easymotion/vim-easymotion'
+"   Plug 'mileszs/ack.vim'
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"   Plug 'ctrlpvim/ctrlp.vim'
+"   "https://github.com/JazzCore/ctrlp-cmatcher
+"   Plug 'JazzCore/ctrlp-cmatcher'
+"   Plug 'easymotion/vim-easymotion'
 
 " ===== Looking =====
   Plug 'morhetz/gruvbox'
-  Plug 'rakr/vim-one'
-  Plug 'altercation/vim-colors-solarized'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'mhinz/vim-startify'
-
-" ===== Utils =====
-" https://github.com/CodeFalling/fcitx-vim-osx
-  Plug 'CodeFalling/fcitx-vim-osx'
-  Plug 'rizzatti/dash.vim'
+"   Plug 'rakr/vim-one'
+"   Plug 'altercation/vim-colors-solarized'
+"   Plug 'vim-airline/vim-airline'
+"   Plug 'vim-airline/vim-airline-themes'
+"   Plug 'mhinz/vim-startify'
+"
+" " ===== Utils =====
+" " https://github.com/CodeFalling/fcitx-vim-osx
+"   Plug 'CodeFalling/fcitx-vim-osx'
+"   Plug 'rizzatti/dash.vim'
   " Plug 'scrooloose/nerdcommenter'
   Plug 'tomtom/tcomment_vim'
-  Plug 'jiangmiao/auto-pairs'
-  " Plug 'ervandew/supertab'
-  " Plug 'tpope/vim-endwise'
-  Plug 'SirVer/ultisnips'
-  Plug 'honza/vim-snippets'
-  " Plug 'wellle/targets.vim'
-  " Plug 'terryma/vim-multiple-cursors'
-  Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-repeat'
-  Plug 'junegunn/vim-easy-align'
-  " https://sjl.bitbucket.io/gundo.vim/
-  Plug 'sjl/gundo.vim'
-  Plug 'chrisbra/NrrwRgn'
-  Plug 'wesleyche/SrcExpl'
-  Plug 'majutsushi/tagbar'
-  Plug 'vim-scripts/taglist.vim'
-  " Plug 'heavenshell/vim-jsdoc'
-  Plug 'joegesualdo/jsdoc.vim'
-  " FZF
-  Plug '/usr/local/opt/fzf'
-  Plug 'junegunn/fzf.vim'
-  Plug 'tpope/vim-fugitive'
-  Plug 'dkarter/bullets.vim'
-
-" ===== Language =====
-  Plug 'HerringtonDarkholme/yats.vim'
-  Plug 'mhartington/nvim-typescript', { 'do': ':UpdateRemotePlugins' }
-  Plug 'w0rp/ale'
+"   Plug 'jiangmiao/auto-pairs'
+"   " Plug 'ervandew/supertab'
+"   " Plug 'tpope/vim-endwise'
+"   Plug 'SirVer/ultisnips'
+"   Plug 'honza/vim-snippets'
+"   " Plug 'wellle/targets.vim'
+"   " Plug 'terryma/vim-multiple-cursors'
+"   Plug 'tpope/vim-surround'
+"   Plug 'tpope/vim-repeat'
+"   Plug 'junegunn/vim-easy-align'
+"   " https://sjl.bitbucket.io/gundo.vim/
+"   Plug 'sjl/gundo.vim'
+"   Plug 'chrisbra/NrrwRgn'
+"   Plug 'wesleyche/SrcExpl'
+"   Plug 'majutsushi/tagbar'
+"   Plug 'vim-scripts/taglist.vim'
+"   " Plug 'heavenshell/vim-jsdoc'
+"   Plug 'joegesualdo/jsdoc.vim'
+"   " FZF
+"   Plug '/usr/local/opt/fzf'
+"   Plug 'junegunn/fzf.vim'
+"   Plug 'tpope/vim-fugitive'
+"   Plug 'dkarter/bullets.vim'
+"
+" " ===== Language =====
+"   Plug 'HerringtonDarkholme/yats.vim'
+"   Plug 'mhartington/nvim-typescript', { 'do': ':UpdateRemotePlugins' }
+"   Plug 'w0rp/ale'
 
 
 " Initialize plugin system
@@ -181,10 +189,10 @@ cnoremap jk <C-c>
 " <esc> => go back to normal mode (in terminal mode)
 tnoremap <Esc> <C-\><C-n>
 " Switch functionality
-nnoremap : ;
-nnoremap ; :
-vnoremap : ;
-vnoremap ; :
+" nnoremap : ;
+" nnoremap ; :
+" vnoremap : ;
+" vnoremap ; :
 nnoremap 0 ^
 nnoremap ^ 0
 " copy to line end
@@ -198,6 +206,10 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+nnoremap <leader>wj <C-w>j
+nnoremap <leader>wk <C-w>k
+nnoremap <leader>wh <C-w>h
+nnoremap <leader>wl <C-w>l
 
 """ traverse change list
 :nnoremap g; g;zz
