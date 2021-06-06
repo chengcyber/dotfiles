@@ -25,6 +25,8 @@ vimrc
 config/nvim/init.vim
 )
 
+mkdir -p ~/.config/nvim
+
 fancy_echo "Backup current config"
 today=`date +%Y%m%d`
 # for i in ; do [ -e $i ] && [ ! -L $i ] && mv $i $i.$today; done
