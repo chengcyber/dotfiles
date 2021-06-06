@@ -22,7 +22,7 @@ source ~/dotfiles/setup/functions.sh
 dotfiles=(
 tmux.conf
 vimrc
-ctags
+config/nvimrc
 )
 
 fancy_echo "Backup current config"
@@ -31,26 +31,26 @@ today=`date +%Y%m%d`
 # for i in $HOME/.vim $HOME/.vimrc; do [ -L $i ] && unlink $i ; done
 for i in ${dotfiles[@]} ;
 do
-  [ -e ~/.$i ] && [ ! -L ~/.$i ] && mv ~/.$i ~/.$i.bak.$today ;
-  [ -L ~/.$i ] && unlink ~/.$i ;
+  [ -e ~/.$i ] && [ ! -L ~/.$i ] && mv ~/.$i ~/.$i.bak.$today  && echo "backup to ~/.$i.bak.$today";
+  [ -L ~/.$i ] && unlink ~/.$i && echo "unlink ~/.$i";
 done
 
 fancy_echo "Symlinking dotfiles"
 for i in ${dotfiles[@]} ;
 do
-  ln -s ~/dotfiles/$i ~/.$i
+  ln -s ~/dotfiles/$i ~/.$i && echo "[OK] symlink ~/.$i"
 done
 
 fancy_echo "Setting up temp folds"
 if [[ ! -e ~/.vim/tmp/backup ]]; then
   mkdir -p ~/.vim/tmp/backup
-  echo "backup created..."
+  echo "backup created... ~/.vim/tmp/backup"
 fi
 if [[ ! -e ~/.vim/tmp/swap ]]; then
   mkdir -p ~/.vim/tmp/swap
-  echo "swap created..."
+  echo "swap created... ~/.vim/tmp/swap"
 fi
 if [[ ! -e ~/.vim/tmp/undo ]]; then
   mkdir -p ~/.vim/tmp/undo
-  echo "undo created..."
+  echo "undo created... ~/.vim/tmp/undo"
 fi
