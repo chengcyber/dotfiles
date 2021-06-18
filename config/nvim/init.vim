@@ -15,11 +15,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " ===== Essentail =====
   Plug 'scrooloose/nerdtree'
-"   Plug 'mileszs/ack.vim'
 "   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"   Plug 'ctrlpvim/ctrlp.vim'
-"   "https://github.com/JazzCore/ctrlp-cmatcher
-"   Plug 'JazzCore/ctrlp-cmatcher'
 "   Plug 'easymotion/vim-easymotion'
 
 " ===== Looking =====
@@ -326,6 +322,7 @@ let NERDTreeDirArrows = 1
 let NERDChristmasTree = 1
 let NERDTreeChDirMode = 2
 let NERDTreeQuitOnOpen=1
+let g:NERDTreeNodeDelimiter = "\u00a0"
 
 """ shortcut to open NERDTree
 nnoremap <leader>b :NERDTreeToggle<CR>
