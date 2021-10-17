@@ -109,4 +109,5 @@ sudo apt-get install xclip # or xsel
 - [colbycheeze/dotfiles](https://github.com/colbycheeze/dotfiles)
 - [jcxia43/dotfiles](https://github.com/jcxia43/dotfiles)
 - [gpakosz/.tmux](https://github.com/gpakosz/.tmux)
-
+- [jonhoo/configs](https://github.com/jonhoo/configs/blob/master/editor/.config/nvim/init.vim)
+- [crispgm/dotfiles](https://github.com/crispgm/dotfiles)
