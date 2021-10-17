@@ -22,7 +22,7 @@ source ~/dotfiles/setup/functions.sh
 dotfiles=(
 tmux.conf
 vimrc
-config/nvim/init.vim
+# config/nvim/init.vim
 )
 
 mkdir -p ~/.config/nvim
