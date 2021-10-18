@@ -40,9 +40,14 @@ require('lspconfig').tsserver.setup({
 })
 
 require('lspconfig').eslint.setup({
-  on_attach = function ()
-    local nnoremap = require('vimp').nnoremap
-    nnoremap('<leader>ef', ':EslintFixAll<CR>')
+  on_attach = function (client, bufnr)
+    client.resolved_capabilities.document_formatting = true
+
+    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
+    local opts = { noremap=true, silent=true }
+
+    buf_set_keymap('n', '<leader>ef', ':EslintFixAll<CR>', opts)
   end,
   settings = {
     -- pnpm install -g eslint@7
