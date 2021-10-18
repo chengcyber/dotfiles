@@ -37,6 +37,8 @@ return require('packer').startup({function(use)
 
   use 'justinmk/vim-sneak'
 
+  use 'akinsho/toggleterm.nvim'
+
   -- language support
   use 'neovim/nvim-lspconfig'
 
