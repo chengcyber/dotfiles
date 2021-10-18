@@ -38,3 +38,10 @@ require('lspconfig').tsserver.setup({
     debounce_text_changes = 150,
   }
 })
+
+require('lspconfig').eslint.setup({
+  settings = {
+    -- pnpm install -g eslint@7
+    packageManager = 'pnpm',
+  },
+})
