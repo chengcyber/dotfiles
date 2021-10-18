@@ -5,6 +5,7 @@ local nnoremap = vimp.nnoremap
 nnoremap('<leader><leader>', ':Telescope find_files find_command=fd,--hidden,--exclude,*.git,--type,f<cr>')
 nnoremap('<leader>ff', ':Telescope find_files find_command=fd,--no-ignore,--hidden,--exclude,*.git,--type,f<cr>')
 nnoremap('<leader>fg', ':Telescope git_files<cr>')
+nnoremap('<leader>fb', ':Telescope buffers<cr>')
 nnoremap('<leader>fs', ':Telescope live_grep<cr>')
 nnoremap('<leader>ft', ':Telescope help_tags<cr>')
 nnoremap('<leader>fk', ':Telescope keymaps<cr>')
