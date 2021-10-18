@@ -4,6 +4,13 @@
 - [Nerd Font](https://www.nerdfonts.com/)
 - [sharkdp/fd](https://github.com/sharkdp/fd)
 
+# LSP
+
+```
+npm install -g typescript typescript-language-server vscode-langservers-extracted
+pnpm install -g eslint@7
+```
+
 # Setup
 
 ```bash
