@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+
+if [ -z $1 ]; then
+    echo "target_dir is missing. Usage: kclean <folder_name>"
+    exit 1
+fi
+
+target_dir=$1
+
+echo "Cleaning $target_dir"
+
+empty_dir="$(dirname $target_dir)/__empty__"
+
+mkdir -p $empty_dir
+
+echo "Created temporary dir __empty__"
+
+# Sycn the target folder to be like the empty folder
+rsync --archive --delete $empty_dir $target_dir
+
+# Housekeeping rest folders
+rm -Rf $target_dir $empty_dir
+

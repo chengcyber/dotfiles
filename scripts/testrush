@@ -1,0 +1,4 @@
+#!/bin/bash
+
+node $HOME/code/rushstack/libraries/rush-lib/lib-commonjs/start.js $@
+

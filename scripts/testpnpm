@@ -1,0 +1,4 @@
+#!/bin/bash
+
+node $HOME/code/pnpm/packages/pnpm/lib/pnpm.js $@
+
