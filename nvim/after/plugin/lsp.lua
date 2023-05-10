@@ -3,19 +3,26 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
+  'eslint',
   'tsserver',
   'rust_analyzer',
 })
 
+-- server_configurations
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+
 -- Fix Undefined global 'vim'
-lsp.configure('lua-language-server', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
+lsp.configure('lua_ls', {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      }
+    },
+    telemetry = {
+      enable = false,
+    },
+  }
 })
 
 lsp.configure('eslint', {
@@ -69,8 +76,18 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
   vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-  vim.keymap.set("n", "<leader>vfm", function() vim.lsp.buf.formatting() end, opts)
   vim.keymap.set({ "i", "n" }, "<C-k>", function() vim.lsp.buf.signature_help() end, opts)
+
+  -- format
+  -- https://github.com/VonHeikemen/lsp-zero.nvim/blob/v2.x/doc/md/lsp.md#enable-format-on-save
+  lsp.buffer_autoformat()
+  vim.keymap.set({ "n", "x" }, "gq", function()
+    vim.lsp.buf.format({
+      async = false,
+      timeout_ms = 10000,
+    })
+  end, opts)
+
 end)
 
 lsp.setup()
