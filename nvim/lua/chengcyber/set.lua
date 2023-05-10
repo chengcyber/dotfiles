@@ -28,7 +28,7 @@ vim.opt.listchars= {
   precedes = '❮',
   trail = '·',
   tab = '▸ ',
-  eol = '¬'
+  -- eol = '¬'
 }
 vim.opt.showbreak = '↪'
 vim.opt.hlsearch = true -- highlight search
