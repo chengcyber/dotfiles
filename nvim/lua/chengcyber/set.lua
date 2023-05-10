@@ -24,12 +24,12 @@ vim.opt.whichwrap = 'b,s,<,>,[,]' -- cursor is able to move from end of line to 
 vim.opt.backspace = { 'indent', 'eol', 'start' } -- backspace behaviors
 vim.opt.list = true -- show tabs with listchars
 vim.opt.listchars= {
-vim.  extends = '❯',
-vim.  precedes = '❮',
-vim.  trail = '·',
-vim.  tab = '▸ ',
-vim.  eol = '¬'
-vim.}
+  extends = '❯',
+  precedes = '❮',
+  trail = '·',
+  tab = '▸ ',
+  eol = '¬'
+}
 vim.opt.showbreak = '↪'
 vim.opt.hlsearch = true -- highlight search
 vim.opt.incsearch = true -- no incremental search
