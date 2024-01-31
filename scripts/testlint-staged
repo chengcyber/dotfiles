@@ -1,0 +1,4 @@
+#!/bin/bash
+
+node $HOME/code/lint-staged/bin/lint-staged.js $@
+
