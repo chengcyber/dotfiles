@@ -1,0 +1,3 @@
+#!/bin/bash
+
+node $HOME/code/sparo/apps/sparo/bin/sparo-ci $@
